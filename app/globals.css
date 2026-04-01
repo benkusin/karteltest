@@ -1,26 +1,114 @@
 @import "tailwindcss";
 
+/* ── Databricks Design Tokens ── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Colors */
+  --color-red-orange: #FF3621;      /* Primary brand / CTAs / logo accent */
+  --color-gable-green: #1B3139;    /* Dark backgrounds, primary text */
+  --color-spring-wood: #F9F7F4;    /* Page background, card bg */
+  --color-white: #FFFFFF;
+
+  /* Extended Palette */
+  --color-teal-bright: #3BA4C3;
+  --color-teal-muted: #678E96;
+  --color-teal-light: #A1C2C1;
+  --color-teal-dark: #39606D;
+
+  /* Neutral Scale */
+  --color-neutral-50: #F9F7F4;
+  --color-neutral-100: #EDEAE5;
+  --color-neutral-200: #D4D0C8;
+  --color-neutral-300: #B0ADA5;
+  --color-neutral-400: #8C8880;
+  --color-neutral-500: #6B6760;
+  --color-neutral-600: #4A4742;
+  --color-neutral-700: #2E2B28;
+  --color-neutral-800: #1B1917;
+  --color-neutral-900: #0D0C0B;
+
+  /* Semantic */
+  --background: var(--color-spring-wood);
+  --foreground: var(--color-gable-green);
+  --primary: var(--color-red-orange);
+  --border: var(--color-neutral-200);
+
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Layout */
+  --max-width: 1280px;
+  --nav-height: 76px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scroll Behavior ── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Logo Scroll Animation ── */
+@keyframes scroll-logos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll-logos {
+  animation: scroll-logos 30s linear infinite;
+}
+
+/* ── Fade In Up ── */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* ── Utility: Container ── */
+.container-db {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 768px) {
+  .container-db {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-db {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
 }
