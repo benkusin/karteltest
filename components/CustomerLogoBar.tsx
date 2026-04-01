@@ -1,7 +1,7 @@
 const LOGOS = [
   "MGM RESORTS",
-  "FOX",
-  "NETFLIX",
+  "WARNER MUSIC GROUP",
+  "COLEMAN",
   "SPOTIFY",
   "BELLAGIO",
   "BUBBA",
