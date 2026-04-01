@@ -256,15 +256,15 @@ export function Hero({ onOpenModal }: HeroProps) {
             </div>
 
             {/* Stats strip */}
-            <div style={{ ...reveal(240), display: "flex", gap: "0", marginTop: "48px", flexWrap: "wrap" }}>
+            <div style={{ ...reveal(240), display: "grid", gridTemplateColumns: "repeat(3, 1fr)", marginTop: "48px" }}>
               {[
                 { value: "1→50+",     label: "outputs per creative idea" },
                 { value: "3×",        label: "faster time to market" },
                 { value: "Always on", label: "learns with every job" },
               ].map((stat, i) => (
-                <div key={stat.value} style={{ paddingRight: "32px", marginRight: "32px", borderRight: i < 2 ? "1px solid #E5E7EB" : "none" }}>
-                  <div style={{ fontSize: "28px", fontWeight: 700, color: "#1B1F2A", lineHeight: 1.15 }}>{stat.value}</div>
-                  <div style={{ fontSize: "13px", color: "#5E6370", marginTop: "4px", lineHeight: 1.4 }}>{stat.label}</div>
+                <div key={stat.value} style={{ paddingRight: "16px", borderRight: i < 2 ? "1px solid #E5E7EB" : "none", paddingLeft: i > 0 ? "16px" : "0" }}>
+                  <div style={{ fontSize: "clamp(20px, 3vw, 28px)", fontWeight: 700, color: "#1B1F2A", lineHeight: 1.15 }}>{stat.value}</div>
+                  <div style={{ fontSize: "clamp(11px, 1.5vw, 13px)", color: "#5E6370", marginTop: "4px", lineHeight: 1.4 }}>{stat.label}</div>
                 </div>
               ))}
             </div>
