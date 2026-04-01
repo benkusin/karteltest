@@ -1,10 +1,9 @@
 const LOGOS = [
   "MGM RESORTS",
+  "NETFLIX",
+  "NEWELL BRANDS",
   "WARNER MUSIC GROUP",
   "COLEMAN",
-  "SPOTIFY",
-  "BELLAGIO",
-  "BUBBA",
 ];
 
 export function CustomerLogoBar() {
