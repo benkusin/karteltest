@@ -440,28 +440,28 @@ export function TheStack({ onOpenModal }: TheStackProps) {
           ))}
         </div>
 
-        {/* Tab panels — all absolute so container height is fixed */}
-        <div style={{ marginTop: "40px", position: "relative", minHeight: "440px" }}>
-          {TABS.map((tab, i) => (
-            <div
-              key={tab.id}
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                opacity: activeIdx === i ? 1 : 0,
-                pointerEvents: activeIdx === i ? "auto" : "none",
-                transition: "opacity 0.3s ease",
-              }}
-            >
-              <TabPanel
-                tab={tab}
-                onOpenModal={onOpenModal}
-                visible={activeIdx === i}
-              />
-            </div>
-          ))}
+        {/* Tab panels — inactive panels are absolute (out of flow); active panel is in flow to set true height */}
+        <div style={{ marginTop: "40px", position: "relative" }}>
+          {TABS.map((tab, i) => {
+            const isActive = activeIdx === i;
+            return (
+              <div
+                key={tab.id}
+                style={{
+                  opacity: isActive ? 1 : 0,
+                  pointerEvents: isActive ? "auto" : "none",
+                  transition: "opacity 0.3s ease",
+                  ...(isActive ? {} : { position: "absolute", top: 0, left: 0, width: "100%" }),
+                }}
+              >
+                <TabPanel
+                  tab={tab}
+                  onOpenModal={onOpenModal}
+                  visible={isActive}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
