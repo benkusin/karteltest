@@ -78,7 +78,7 @@ export function Hero({ onOpenModal }: HeroProps) {
   return (
     <section style={{ backgroundColor: "#FFFFFF", paddingTop: "80px", paddingBottom: "var(--section-py)" }}>
       <div className="mx-auto" style={{ maxWidth: "1280px", paddingLeft: "clamp(24px, 6.25vw, 80px)", paddingRight: "clamp(24px, 6.25vw, 80px)" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "48px", alignItems: "center" }} className="lg:grid-cols-[3fr_2fr]">
+        <div style={{ display: "grid", gap: "48px", alignItems: "center" }} className="grid-cols-1 lg:grid-cols-[3fr_2fr]">
 
           {/* Left */}
           <div>

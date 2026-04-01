@@ -152,12 +152,11 @@ function TabPanel({ tab, onOpenModal, visible }: TabPanelProps) {
         opacity: visible ? 1 : 0,
         transition: "opacity 0.3s ease",
         display: "grid",
-        gridTemplateColumns: "1fr",
         gap: "40px",
         alignItems: "center",
         pointerEvents: visible ? "auto" : "none",
       }}
-      className="md:grid-cols-2"
+      className="grid-cols-1 md:grid-cols-2"
     >
       {/* Screenshot placeholder */}
       <div

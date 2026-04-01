@@ -79,8 +79,11 @@ export function HowItWorks() {
           Start where you need to. Scale from there.
         </h2>
 
+        {/* ── Both timelines wrapped so IntersectionObserver fires on one ref ── */}
+        <div ref={ref}>
+
         {/* ── Desktop timeline (md+) ── */}
-        <div ref={ref} className="hidden md:block">
+        <div className="hidden md:block">
           <div style={{ position: "relative" }}>
             {/* Connecting line — horizontally centered on the circles */}
             <div
@@ -154,7 +157,7 @@ export function HowItWorks() {
         </div>
 
         {/* ── Mobile timeline (< md) ── */}
-        <div ref={ref} className="block md:hidden">
+        <div className="block md:hidden">
           <div style={{ position: "relative", paddingLeft: "36px" }}>
             {/* Vertical connecting line */}
             <div
@@ -219,6 +222,8 @@ export function HowItWorks() {
             </div>
           </div>
         </div>
+
+        </div>{/* end ref wrapper */}
       </div>
     </section>
   );

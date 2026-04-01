@@ -161,11 +161,10 @@ export function Platform({ onOpenModal }: PlatformProps) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr",
             gap: "64px",
             alignItems: "start",
           }}
-          className="lg:grid-cols-[65fr_30fr]"
+          className="grid-cols-1 lg:grid-cols-[65fr_30fr]"
         >
           {/* ── Main content ── */}
           <div>
