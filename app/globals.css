@@ -1,98 +1,59 @@
 @import "tailwindcss";
 
-/* ── Databricks Design Tokens ── */
+/* ── Kartel Design Tokens ── */
 :root {
-  /* Brand Colors */
-  --color-red-orange: #FF3621;      /* Primary brand / CTAs / logo accent */
-  --color-gable-green: #1B3139;    /* Dark backgrounds, primary text */
-  --color-spring-wood: #F9F7F4;    /* Page background, card bg */
-  --color-white: #FFFFFF;
-
-  /* Extended Palette */
-  --color-teal-bright: #3BA4C3;
-  --color-teal-muted: #678E96;
-  --color-teal-light: #A1C2C1;
-  --color-teal-dark: #39606D;
-
-  /* Neutral Scale */
-  --color-neutral-50: #F9F7F4;
-  --color-neutral-100: #EDEAE5;
-  --color-neutral-200: #D4D0C8;
-  --color-neutral-300: #B0ADA5;
-  --color-neutral-400: #8C8880;
-  --color-neutral-500: #6B6760;
-  --color-neutral-600: #4A4742;
-  --color-neutral-700: #2E2B28;
-  --color-neutral-800: #1B1917;
-  --color-neutral-900: #0D0C0B;
-
-  /* Semantic */
-  --background: var(--color-spring-wood);
-  --foreground: var(--color-gable-green);
-  --primary: var(--color-red-orange);
-  --border: var(--color-neutral-200);
-
-  /* Typography */
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --bg-white: #FFFFFF;
+  --bg-light: #F7F7F8;
+  --bg-dark: #1B1F2A;
+  --bg-dark-elevated: #242836;
+  --text-primary: #1B1F2A;
+  --text-secondary: #5E6370;
+  --text-white: #FFFFFF;
+  --text-white-muted: #A0A5B2;
+  --accent: #4F5FE6;
+  --accent-hover: #3D4BD4;
+  --accent-light: rgba(79, 95, 230, 0.08);
+  --border: #E5E7EB;
+  --border-dark: rgba(255, 255, 255, 0.1);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --font: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --content-max: 1280px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
 
   /* Layout */
-  --max-width: 1280px;
-  --nav-height: 76px;
+  --nav-height: 72px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --color-background: var(--bg-white);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font);
 }
 
 * {
   box-sizing: border-box;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* ── Scroll Behavior ── */
 html {
   scroll-behavior: smooth;
 }
 
-/* ── Logo Scroll Animation ── */
-@keyframes scroll-logos {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+body {
+  background: var(--bg-white);
+  color: var(--text-primary);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.animate-scroll-logos {
-  animation: scroll-logos 30s linear infinite;
-}
-
-/* ── Fade In Up ── */
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
-}
-
-/* ── Utility: Container ── */
-.container-db {
+/* ── Container ── */
+.container-k {
   width: 100%;
-  max-width: var(--max-width);
+  max-width: var(--content-max);
   margin-left: auto;
   margin-right: auto;
   padding-left: 24px;
@@ -100,15 +61,35 @@ html {
 }
 
 @media (min-width: 768px) {
-  .container-db {
+  .container-k {
     padding-left: 48px;
     padding-right: 48px;
   }
 }
 
 @media (min-width: 1024px) {
-  .container-db {
+  .container-k {
     padding-left: 80px;
     padding-right: 80px;
   }
+}
+
+/* ── Logo Scroll Animation ── */
+@keyframes scroll-logos {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll-logos {
+  animation: scroll-logos 32s linear infinite;
+}
+
+/* ── Fade In Up ── */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
 }

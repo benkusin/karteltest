@@ -9,36 +9,37 @@ export interface NavColumn {
   items: NavItem[];
 }
 
-export interface NavDropdown {
-  label: string;
-  columns: NavColumn[];
-}
-
-export interface CustomerLogo {
+export interface ClientLogo {
   name: string;
-  src: string;
-  width: number;
-  height: number;
+  src?: string;
 }
 
-export interface PlatformFeature {
+export interface StackTab {
   id: string;
-  tabLabel: string;
+  label: string;
+  eyebrow: string;
   headline: string;
-  subheadline: string;
+  body: string;
+  features: string[];
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+export interface TimelineStep {
+  number: string;
+  title: string;
+  body: string;
+}
+
+export interface ResourceCard {
+  type: "Case Study" | "Guide" | "Webinar" | "Report";
+  title: string;
   body: string;
   ctaLabel: string;
   ctaHref: string;
-  imageSrc?: string;
-  badgeLabel?: string;
 }
 
 export interface FooterColumn {
   heading: string;
   links: Array<{ label: string; href: string }>;
-}
-
-export interface StatItem {
-  value: string;
-  label: string;
 }

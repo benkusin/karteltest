@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Databricks: Leading Data and AI Solutions for Enterprises",
+  title: "Kartel — The AI Creative Supply Chain",
   description:
-    "More than 15,000 organizations worldwide — including Block, Comcast, Condé Nast, Rivian, Shell, and over 60% of the Fortune 500 — rely on the Databricks Data Intelligence Platform.",
+    "Kartel builds and operates the entire creative production pipeline for brands and studios: platform, orchestration, talent, tools, and data/model training. All under one roof.",
 };
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-[#F9F7F4] text-[#1B3139]">
+      <body className="min-h-full flex flex-col bg-white text-[#1B1F2A]">
         {children}
       </body>
     </html>
