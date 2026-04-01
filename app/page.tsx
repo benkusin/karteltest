@@ -5,6 +5,7 @@ import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { CustomerLogoBar } from "@/components/CustomerLogoBar";
 import { Platform } from "@/components/Platform";
+import { TheStack } from "@/components/TheStack";
 import { PlatformTabs } from "@/components/PlatformTabs";
 import { SummitSection } from "@/components/SummitSection";
 import { Footer } from "@/components/Footer";
@@ -19,6 +20,7 @@ export default function Home() {
         <Hero onOpenModal={() => setModalOpen(true)} />
         <CustomerLogoBar />
         <Platform onOpenModal={() => setModalOpen(true)} />
+        <TheStack onOpenModal={() => setModalOpen(true)} />
         <PlatformTabs />
         <SummitSection />
       </main>
