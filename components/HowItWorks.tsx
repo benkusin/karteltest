@@ -53,7 +53,7 @@ export function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      style={{ backgroundColor: "#F7F7F8", paddingTop: "96px", paddingBottom: "96px" }}
+      style={{ backgroundColor: "#F7F7F8", paddingTop: "var(--section-py)", paddingBottom: "var(--section-py)" }}
     >
       <div
         className="mx-auto"

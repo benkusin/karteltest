@@ -148,7 +148,7 @@ export function Platform({ onOpenModal }: PlatformProps) {
   return (
     <section
       id="platform"
-      style={{ backgroundColor: "#FFFFFF", paddingTop: "96px", paddingBottom: "96px" }}
+      style={{ backgroundColor: "#FFFFFF", paddingTop: "var(--section-py)", paddingBottom: "var(--section-py)" }}
     >
       <div
         className="mx-auto"
@@ -228,7 +228,7 @@ export function Platform({ onOpenModal }: PlatformProps) {
             {/* CTAs */}
             <div style={{ display: "flex", alignItems: "center", gap: "24px", marginTop: "40px", flexWrap: "wrap" }}>
               <button
-                onClick={onOpenModal}
+                onClick={() => document.getElementById("the-stack")?.scrollIntoView({ behavior: "smooth" })}
                 style={{
                   backgroundColor: "#4F5FE6", color: "#FFFFFF", border: "none",
                   borderRadius: "6px", padding: "12px 24px", fontSize: "15px",

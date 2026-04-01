@@ -26,7 +26,7 @@ const TABS: TabData[] = [
       "Full desktop and mobile experience",
     ],
     ctas: [
-      { label: "See how →" },
+      { label: "See how →", isModal: true },
       { label: "Schedule demo →", isModal: true },
     ],
   },
@@ -42,7 +42,7 @@ const TABS: TabData[] = [
       "Asset library & media search across all clients",
     ],
     ctas: [
-      { label: "See how →" },
+      { label: "See how →", isModal: true },
       { label: "Watch demo →", isModal: true },
     ],
   },
@@ -58,7 +58,7 @@ const TABS: TabData[] = [
       "Human + AI collaboration at every stage",
     ],
     ctas: [
-      { label: "Meet the team →" },
+      { label: "Meet the team →", isModal: true },
       { label: "Schedule demo →", isModal: true },
     ],
   },
@@ -74,7 +74,7 @@ const TABS: TabData[] = [
       "Node-based workflow architecture",
     ],
     ctas: [
-      { label: "See how →" },
+      { label: "See how →", isModal: true },
       { label: "Watch demo →", isModal: true },
     ],
   },
@@ -90,7 +90,7 @@ const TABS: TabData[] = [
       "Approval pattern learning for faster iterations",
     ],
     ctas: [
-      { label: "See how →" },
+      { label: "See how →", isModal: true },
       { label: "Schedule demo →", isModal: true },
     ],
   },
@@ -249,7 +249,7 @@ export function TheStack({ onOpenModal }: TheStackProps) {
   return (
     <section
       id="the-stack"
-      style={{ backgroundColor: "#FFFFFF", paddingTop: "96px", paddingBottom: "96px" }}
+      style={{ backgroundColor: "#FFFFFF", paddingTop: "var(--section-py)", paddingBottom: "var(--section-py)" }}
     >
       <div
         className="mx-auto"

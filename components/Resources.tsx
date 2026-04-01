@@ -158,7 +158,7 @@ export function Resources() {
   const { ref, visible } = useInView();
 
   return (
-    <section style={{ backgroundColor: "#FFFFFF", paddingTop: "96px", paddingBottom: "96px" }}>
+    <section id="resources" style={{ backgroundColor: "#FFFFFF", paddingTop: "var(--section-py)", paddingBottom: "var(--section-py)" }}>
       <div
         className="mx-auto"
         style={{
