@@ -10,62 +10,205 @@ function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }
 
-function PromoCard() {
-  const [hovered, setHovered] = useState(false);
+// ── Icon SVGs ─────────────────────────────────────────────────────────────────
+
+function IconPlatform() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <rect x="1" y="2" width="16" height="11" rx="2" stroke="white" strokeWidth="1.5" strokeOpacity="0.9" fill="none"/>
+      <path d="M6 16h6M9 13v3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.9"/>
+    </svg>
+  );
+}
+
+function IconOrchestration() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <circle cx="4" cy="9" r="2" stroke="white" strokeWidth="1.5" strokeOpacity="0.9"/>
+      <circle cx="14" cy="4" r="2" stroke="white" strokeWidth="1.5" strokeOpacity="0.9"/>
+      <circle cx="14" cy="14" r="2" stroke="white" strokeWidth="1.5" strokeOpacity="0.9"/>
+      <path d="M6 9h3M9 9L12 4.5M9 9L12 13.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.7"/>
+    </svg>
+  );
+}
+
+function IconTalent() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <circle cx="9" cy="6" r="3" stroke="white" strokeWidth="1.5" strokeOpacity="0.9"/>
+      <path d="M3 16c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.9"/>
+    </svg>
+  );
+}
+
+function IconTools() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M10 3l-1.5 4H13L8 15l1.5-4.5H6L10 3z" stroke="white" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round" strokeOpacity="0.9" fill="none"/>
+    </svg>
+  );
+}
+
+// ── Stack graphic ─────────────────────────────────────────────────────────────
+
+function StackGraphic() {
+  const [hovered, setHovered] = useState<number | null>(null);
+
+  const LAYERS = [
+    {
+      label: "Platform",
+      sub: "Kartel OS — proprietary creative infrastructure",
+      bg: "#4F5FE6",
+      bgHover: "#5B6AEA",
+      glow: "rgba(79,95,230,0.5)",
+      icon: <IconPlatform />,
+    },
+    {
+      label: "Orchestration",
+      sub: "Workflow automation, model routing & task sequencing",
+      bg: "#3A4BD4",
+      bgHover: "#4557DC",
+      glow: "rgba(58,75,212,0.4)",
+      icon: <IconOrchestration />,
+    },
+    {
+      label: "Talent",
+      sub: "AI artists, prompt engineers & creative directors",
+      bg: "#2A38AA",
+      bgHover: "#3344B8",
+      glow: "rgba(42,56,170,0.4)",
+      icon: <IconTalent />,
+    },
+    {
+      label: "Tools",
+      sub: "ComfyUI, gen-AI models, APIs & custom pipelines",
+      bg: "#1C2880",
+      bgHover: "#243090",
+      glow: "rgba(28,40,128,0.4)",
+      icon: <IconTools />,
+    },
+  ];
 
   return (
     <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
       style={{
-        backgroundColor: "#FFFFFF",
-        borderRadius: "8px",
-        padding: "20px",
-        border: "1px solid #E5E7EB",
-        boxShadow: hovered ? "0 4px 16px rgba(0,0,0,0.08)" : "0 1px 3px rgba(0,0,0,0.06)",
-        transition: "box-shadow 0.25s ease",
-        cursor: "pointer",
+        background: "linear-gradient(160deg, #0C0E1C 0%, #111527 50%, #0E1020 100%)",
+        borderRadius: "16px",
+        padding: "24px 20px 20px",
+        border: "1px solid rgba(79,95,230,0.18)",
+        boxShadow: "0 24px 64px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.03) inset",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
+      {/* Ambient background glow */}
       <div style={{
-        width: "100%", height: "180px", backgroundColor: "#242836",
-        borderRadius: "6px", marginBottom: "16px",
-        display: "flex", alignItems: "center", justifyContent: "center",
-      }}>
-        <div style={{
-          width: "40px", height: "40px", borderRadius: "50%",
-          backgroundColor: "rgba(255,255,255,0.12)",
-          display: "flex", alignItems: "center", justifyContent: "center",
+        position: "absolute", top: "-40px", left: "50%", transform: "translateX(-50%)",
+        width: "200px", height: "120px",
+        background: "radial-gradient(ellipse, rgba(79,95,230,0.15) 0%, transparent 70%)",
+        pointerEvents: "none",
+      }} />
+
+      {/* Header */}
+      <div style={{ textAlign: "center", marginBottom: "20px", position: "relative" }}>
+        <p style={{
+          fontSize: "10px", fontWeight: 600, letterSpacing: "0.14em",
+          color: "rgba(255,255,255,0.35)", textTransform: "uppercase", margin: 0,
         }}>
-          <svg width="14" height="16" viewBox="0 0 14 16" fill="none" aria-hidden="true">
-            <path d="M1 1l12 7-12 7V1z" fill="white" opacity="0.8" />
-          </svg>
+          The Creative Stack
+        </p>
+      </div>
+
+      {/* Layers */}
+      <div style={{ perspective: "900px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "8px", transform: "rotateX(4deg)", transformStyle: "preserve-3d" }}>
+          {LAYERS.map((layer, i) => {
+            const isHovered = hovered === i;
+            const zDepth = (LAYERS.length - 1 - i) * 6;
+            return (
+              <div key={layer.label}>
+                <div
+                  onMouseEnter={() => setHovered(i)}
+                  onMouseLeave={() => setHovered(null)}
+                  style={{
+                    background: isHovered
+                      ? `linear-gradient(115deg, ${layer.bgHover} 0%, ${layer.bg} 100%)`
+                      : `linear-gradient(115deg, ${layer.bg} 0%, ${layer.bg}CC 100%)`,
+                    borderRadius: "8px",
+                    padding: "11px 14px",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    boxShadow: isHovered
+                      ? `0 8px 28px ${layer.glow}, 0 1px 0 rgba(255,255,255,0.15) inset`
+                      : `0 ${3 + i}px ${10 + zDepth}px ${layer.glow}, 0 1px 0 rgba(255,255,255,0.07) inset`,
+                    transform: `translateZ(${zDepth}px) ${isHovered ? "translateY(-1px) scale(1.01)" : ""}`,
+                    transition: "transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "12px",
+                    cursor: "default",
+                    position: "relative",
+                  }}
+                >
+                  {/* Icon */}
+                  <div style={{
+                    width: "34px", height: "34px", borderRadius: "7px",
+                    backgroundColor: "rgba(255,255,255,0.12)",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    flexShrink: 0,
+                    boxShadow: "0 1px 0 rgba(255,255,255,0.1) inset",
+                  }}>
+                    {layer.icon}
+                  </div>
+
+                  {/* Text */}
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <p style={{ margin: 0, fontSize: "13px", fontWeight: 700, color: "#fff", letterSpacing: "0.01em", lineHeight: 1.2 }}>
+                      {layer.label}
+                    </p>
+                    <p style={{ margin: "3px 0 0", fontSize: "10.5px", color: "rgba(255,255,255,0.6)", lineHeight: 1.4, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                      {layer.sub}
+                    </p>
+                  </div>
+
+                  {/* Layer indicator */}
+                  <div style={{
+                    width: "6px", height: "6px", borderRadius: "50%",
+                    backgroundColor: "rgba(255,255,255,0.4)",
+                    flexShrink: 0,
+                    boxShadow: "0 0 6px rgba(255,255,255,0.3)",
+                  }} />
+                </div>
+
+                {/* Connector arrow between layers */}
+                {i < LAYERS.length - 1 && (
+                  <div style={{ display: "flex", justifyContent: "center", height: "8px", alignItems: "center" }}>
+                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                      <path d="M5 0 L5 5 M2.5 3 L5 6 L7.5 3" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
-      <p style={{ fontSize: "16px", fontWeight: 700, color: "#1B1F2A", margin: 0, lineHeight: 1.35 }}>
-        From 1 brief to 50+ outputs
+
+      {/* Footer */}
+      <p style={{
+        textAlign: "center", fontSize: "10px",
+        color: "rgba(255,255,255,0.2)",
+        margin: "16px 0 0", letterSpacing: "0.06em",
+      }}>
+        Every layer. One company. Zero dependencies.
       </p>
-      <p style={{ fontSize: "14px", color: "#5E6370", marginTop: "6px", lineHeight: 1.5 }}>
-        See how brands scale creative production with Kartel
-      </p>
-      <button
-        onClick={() => scrollTo("the-stack")}
-        style={{
-          display: "inline-block", marginTop: "14px", fontSize: "14px",
-          fontWeight: 500, color: "#4F5FE6", background: "none",
-          border: "none", padding: 0, cursor: "pointer",
-        }}
-        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.textDecoration = "underline"; }}
-        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.textDecoration = "none"; }}
-      >
-        Watch the overview →
-      </button>
     </div>
   );
 }
 
+// ── Hero ──────────────────────────────────────────────────────────────────────
+
 export function Hero({ onOpenModal }: HeroProps) {
-  // Animate in on mount — hero is above fold so use mounted state
   const [loaded, setLoaded] = useState(false);
   useEffect(() => { const t = requestAnimationFrame(() => setLoaded(true)); return () => cancelAnimationFrame(t); }, []);
 
@@ -127,9 +270,9 @@ export function Hero({ onOpenModal }: HeroProps) {
             </div>
           </div>
 
-          {/* Right */}
+          {/* Right — 3D stack graphic */}
           <div style={reveal(200)}>
-            <PromoCard />
+            <StackGraphic />
           </div>
         </div>
       </div>
