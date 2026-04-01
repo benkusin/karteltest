@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 36" fill="none">
+  <!-- Databricks flame/spark mark -->
+  <path d="M8 18L18 4L28 18L18 32L8 18Z" fill="#FF3621"/>
+  <path d="M14 18L18 10L22 18L18 26L14 18Z" fill="#FFFFFF" opacity="0.4"/>
+  <!-- Wordmark -->
+  <text x="36" y="25" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#1B3139">databricks</text>
+</svg>
