@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { CustomerLogoBar } from "@/components/CustomerLogoBar";
+import { Platform } from "@/components/Platform";
 import { PlatformTabs } from "@/components/PlatformTabs";
 import { SummitSection } from "@/components/SummitSection";
 import { Footer } from "@/components/Footer";
@@ -17,6 +18,7 @@ export default function Home() {
       <main>
         <Hero onOpenModal={() => setModalOpen(true)} />
         <CustomerLogoBar />
+        <Platform onOpenModal={() => setModalOpen(true)} />
         <PlatformTabs />
         <SummitSection />
       </main>
