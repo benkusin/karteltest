@@ -1,77 +1,82 @@
-import { cn } from "@/lib/utils";
-
-const LOGOS: string[] = [
-  "Block",
-  "Comcast",
-  "Condé Nast",
-  "Rivian",
-  "Shell",
-  "Nike",
-  "Nationwide",
-  "H&R Block",
-  "T-Mobile",
-  "Regeneron",
-  "Walgreens",
-  "Atlassian",
+const LOGOS = [
+  "MGM RESORTS",
+  "FOX",
+  "NETFLIX",
+  "SPOTIFY",
+  "BELLAGIO",
+  "BUBBA",
 ];
-
-function LogoList() {
-  return (
-    <>
-      {LOGOS.map((name) => (
-        <span
-          key={name}
-          className={cn(
-            "whitespace-nowrap px-2",
-            "text-[17px] font-bold",
-            "text-[#B0ADA5]",
-            "transition-colors duration-300",
-            "hover:text-[#1B3139]",
-            "cursor-default select-none"
-          )}
-        >
-          {name}
-        </span>
-      ))}
-    </>
-  );
-}
 
 export function CustomerLogoBar() {
   return (
     <section
-      className="w-full"
-      style={{ backgroundColor: "#FFFFFF", padding: "48px 0 56px" }}
+      style={{
+        backgroundColor: "#F7F7F8",
+        paddingTop: "48px",
+        paddingBottom: "48px",
+      }}
     >
-      {/* Eyebrow text */}
-      <p
-        className={cn(
-          "text-[14px] font-medium text-center",
-          "text-[#6B6760]",
-          "mb-10",
-          "max-w-[600px] mx-auto px-4"
-        )}
+      <div
+        className="mx-auto"
+        style={{
+          maxWidth: "1280px",
+          paddingLeft: "clamp(24px, 6.25vw, 80px)",
+          paddingRight: "clamp(24px, 6.25vw, 80px)",
+          textAlign: "center",
+        }}
       >
-        More than 15,000 organizations worldwide, including over 60% of the
-        Fortune 500, rely on Databricks.
-      </p>
-
-      {/* Scroll strip */}
-      <div className="w-full overflow-hidden">
-        {/* Track: two copies of logos for seamless loop */}
-        <div
-          className={cn(
-            "flex items-center gap-16",
-            "animate-scroll-logos",
-            "hover:[animation-play-state:paused]"
-          )}
-          style={{ width: "200%" }}
-          aria-hidden="true"
+        {/* Label */}
+        <p
+          style={{
+            fontSize: "12px",
+            fontWeight: 500,
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
+            color: "#5E6370",
+            margin: 0,
+          }}
         >
-          <LogoList />
-          <LogoList />
+          Trusted by brands and studios
+        </p>
+
+        {/* Wordmarks */}
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "48px",
+            marginTop: "24px",
+          }}
+          className="logo-bar-row"
+        >
+          {LOGOS.map((name) => (
+            <span
+              key={name}
+              style={{
+                fontSize: "16px",
+                fontWeight: 700,
+                color: "rgba(27, 31, 42, 0.35)",
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+                userSelect: "none",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {name}
+            </span>
+          ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 767px) {
+          .logo-bar-row {
+            gap: 32px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
