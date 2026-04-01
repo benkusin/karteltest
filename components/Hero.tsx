@@ -1,62 +1,247 @@
-import Link from "next/link";
+"use client";
 
-export function Hero({ onOpenModal }: { onOpenModal?: () => void }) {
+import { useState } from "react";
+
+interface HeroProps {
+  onOpenModal?: () => void;
+}
+
+function PromoCard() {
+  const [hovered, setHovered] = useState(false);
+
   return (
-    <section className="w-full bg-[#F9F7F4] pt-[64px] pb-[48px] md:pt-[100px] md:pb-[80px]">
-      <div className="mx-auto max-w-[900px] px-4 text-center">
-        {/* Heading */}
-        <h1
-          className="
-            font-bold text-[36px] md:text-[56px] text-[#1B3139]
-            leading-[1.15] tracking-[-0.02em]
-          "
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        backgroundColor: "#FFFFFF",
+        borderRadius: "8px",
+        padding: "20px",
+        border: "1px solid #E5E7EB",
+        boxShadow: hovered
+          ? "0 4px 16px rgba(0,0,0,0.08)"
+          : "0 1px 3px rgba(0,0,0,0.06)",
+        transition: "box-shadow 0.25s ease",
+        cursor: "pointer",
+      }}
+    >
+      {/* Thumbnail placeholder */}
+      <div
+        style={{
+          width: "100%",
+          height: "180px",
+          backgroundColor: "#242836",
+          borderRadius: "6px",
+          marginBottom: "16px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {/* Play icon hint */}
+        <div
+          style={{
+            width: "40px",
+            height: "40px",
+            borderRadius: "50%",
+            backgroundColor: "rgba(255,255,255,0.12)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
-          The Data Intelligence Platform
-        </h1>
+          <svg width="14" height="16" viewBox="0 0 14 16" fill="none" aria-hidden="true">
+            <path d="M1 1l12 7-12 7V1z" fill="white" opacity="0.8" />
+          </svg>
+        </div>
+      </div>
 
-        {/* Body */}
-        <p
-          className="
-            mx-auto mt-6 max-w-[700px]
-            text-[16px] md:text-[18px] font-normal
-            text-[#4A4742] leading-[1.65]
-          "
+      {/* Card copy */}
+      <p style={{ fontSize: "16px", fontWeight: 700, color: "#1B1F2A", margin: 0, lineHeight: 1.35 }}>
+        From 1 brief to 50+ outputs
+      </p>
+      <p style={{ fontSize: "14px", color: "#5E6370", marginTop: "6px", lineHeight: 1.5 }}>
+        See how brands scale creative production with Kartel
+      </p>
+      <a
+        href="#the-stack"
+        onClick={(e) => {
+          e.preventDefault();
+          document.getElementById("the-stack")?.scrollIntoView({ behavior: "smooth" });
+        }}
+        style={{
+          display: "inline-block",
+          marginTop: "14px",
+          fontSize: "14px",
+          fontWeight: 500,
+          color: "#4F5FE6",
+          textDecoration: "none",
+        }}
+        onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.textDecoration = "underline"; }}
+        onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.textDecoration = "none"; }}
+      >
+        Watch the overview →
+      </a>
+    </div>
+  );
+}
+
+export function Hero({ onOpenModal }: HeroProps) {
+  return (
+    <section
+      style={{
+        backgroundColor: "#FFFFFF",
+        paddingTop: "140px",
+        paddingBottom: "96px",
+      }}
+    >
+      <div
+        className="mx-auto"
+        style={{
+          maxWidth: "1280px",
+          paddingLeft: "clamp(24px, 6.25vw, 80px)",
+          paddingRight: "clamp(24px, 6.25vw, 80px)",
+        }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "48px",
+            alignItems: "center",
+          }}
+          className="lg:grid-cols-[3fr_2fr]"
         >
-          More than 15,000 organizations worldwide — including Block, Comcast,
-          Condé Nast, Rivian, Shell, and over 60% of the Fortune 500 — rely on
-          the Databricks Data Intelligence Platform to take control of their data
-          and put it to work with AI.
-        </p>
+          {/* ── Left: text block ── */}
+          <div>
+            <h1
+              style={{
+                fontSize: "clamp(40px, 5vw, 60px)",
+                fontWeight: 700,
+                color: "#1B1F2A",
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+                maxWidth: "600px",
+                margin: 0,
+              }}
+            >
+              Your AI creative supply chain — built and operated
+            </h1>
 
-        {/* CTA Buttons */}
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
-          {/* Primary */}
-          <Link
-            href="/try-databricks"
-            className="
-              inline-block rounded px-7 py-[14px]
-              bg-[#FF3621] text-white
-              text-base font-semibold
-              transition-colors duration-200
-              hover:bg-[#E02E1A]
-            "
-          >
-            Try Databricks
-          </Link>
+            <p
+              style={{
+                fontSize: "clamp(16px, 1.5vw, 19px)",
+                color: "#5E6370",
+                lineHeight: 1.65,
+                maxWidth: "520px",
+                marginTop: "24px",
+              }}
+            >
+              Kartel builds the tools, assembles the talent, orchestrates the
+              workflows, and operates the platform. You submit a brief. We deliver
+              brand-accurate creative across every channel.
+            </p>
 
-          {/* Outline */}
-          <Link
-            href="/contact"
-            className="
-              inline-block rounded px-[26px] py-3
-              border-2 border-[#1B3139] text-[#1B3139]
-              bg-transparent text-base font-semibold
-              transition-colors duration-200
-              hover:border-[#FF3621] hover:text-[#FF3621]
-            "
-          >
-            Get a demo
-          </Link>
+            {/* CTAs */}
+            <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginTop: "32px" }}>
+              <button
+                onClick={onOpenModal}
+                style={{
+                  backgroundColor: "#4F5FE6",
+                  color: "#FFFFFF",
+                  border: "none",
+                  borderRadius: "6px",
+                  padding: "12px 24px",
+                  fontSize: "15px",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  transition: "background-color 0.2s ease",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#3D4BD4"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#4F5FE6"; }}
+              >
+                Start a pilot →
+              </button>
+
+              <button
+                onClick={onOpenModal}
+                style={{
+                  backgroundColor: "transparent",
+                  color: "#1B1F2A",
+                  border: "1px solid #E5E7EB",
+                  borderRadius: "6px",
+                  padding: "12px 24px",
+                  fontSize: "15px",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  transition: "border-color 0.2s ease, color 0.2s ease",
+                }}
+                onMouseEnter={(e) => {
+                  const b = e.currentTarget as HTMLButtonElement;
+                  b.style.borderColor = "#4F5FE6";
+                  b.style.color = "#4F5FE6";
+                }}
+                onMouseLeave={(e) => {
+                  const b = e.currentTarget as HTMLButtonElement;
+                  b.style.borderColor = "#E5E7EB";
+                  b.style.color = "#1B1F2A";
+                }}
+              >
+                See demos →
+              </button>
+            </div>
+
+            {/* Stats strip */}
+            <div
+              style={{
+                display: "flex",
+                gap: "0",
+                marginTop: "48px",
+                flexWrap: "wrap",
+              }}
+            >
+              {[
+                { value: "1→50+",     label: "outputs per creative idea" },
+                { value: "3×",        label: "faster time to market" },
+                { value: "Always on", label: "learns with every job" },
+              ].map((stat, i) => (
+                <div
+                  key={stat.value}
+                  style={{
+                    paddingRight: "32px",
+                    marginRight: "32px",
+                    borderRight: i < 2 ? "1px solid #E5E7EB" : "none",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "28px",
+                      fontWeight: 700,
+                      color: "#1B1F2A",
+                      lineHeight: 1.15,
+                    }}
+                  >
+                    {stat.value}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "13px",
+                      color: "#5E6370",
+                      marginTop: "4px",
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Right: promo card ── */}
+          <div>
+            <PromoCard />
+          </div>
         </div>
       </div>
     </section>
