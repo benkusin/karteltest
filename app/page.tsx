@@ -7,6 +7,7 @@ import { CustomerLogoBar } from "@/components/CustomerLogoBar";
 import { Platform } from "@/components/Platform";
 import { TheStack } from "@/components/TheStack";
 import { HowItWorks } from "@/components/HowItWorks";
+import { Resources } from "@/components/Resources";
 import { PlatformTabs } from "@/components/PlatformTabs";
 import { SummitSection } from "@/components/SummitSection";
 import { Footer } from "@/components/Footer";
@@ -23,6 +24,7 @@ export default function Home() {
         <Platform onOpenModal={() => setModalOpen(true)} />
         <TheStack onOpenModal={() => setModalOpen(true)} />
         <HowItWorks />
+        <Resources />
         <PlatformTabs />
         <SummitSection />
       </main>
