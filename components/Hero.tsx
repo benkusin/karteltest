@@ -226,7 +226,7 @@ export function Hero({ onOpenModal }: HeroProps) {
           {/* Left */}
           <div>
             <h1 style={{ ...reveal(0), fontSize: "clamp(36px, 5vw, 60px)", fontWeight: 700, color: "#1B1F2A", lineHeight: 1.1, letterSpacing: "-0.02em", maxWidth: "600px", margin: 0 }}>
-              Your AI creative supply chain — built and operated
+              Your AI creative supply chain, built and operated
             </h1>
 
             <p style={{ ...reveal(80), fontSize: "clamp(16px, 1.5vw, 19px)", color: "#5E6370", lineHeight: 1.65, maxWidth: "520px", marginTop: "24px" }}>
