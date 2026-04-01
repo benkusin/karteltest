@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export function Hero() {
+export function Hero({ onOpenModal }: { onOpenModal?: () => void }) {
   return (
     <section className="w-full bg-[#F9F7F4] pt-[64px] pb-[48px] md:pt-[100px] md:pb-[80px]">
       <div className="mx-auto max-w-[900px] px-4 text-center">
