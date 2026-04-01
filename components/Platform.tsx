@@ -252,18 +252,33 @@ export function Platform({ onOpenModal }: PlatformProps) {
             </div>
           </div>
 
-          {/* ── Sidebar ── */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            <SidebarCard
-              title="The Complete Guide to AI Creative Production"
-              subtitle="How brands are rebuilding their supply chains"
-              linkLabel="Get the overview →"
-            />
-            <SidebarCard
-              title="Kartel for Entertainment Studios"
-              subtitle="From script to screen — AI-powered pipelines"
-              linkLabel="Learn more →"
-            />
+          {/* ── Sidebar — CBS video ── */}
+          <div>
+            <div style={{
+              borderRadius: "12px",
+              overflow: "hidden",
+              boxShadow: "0 4px 24px rgba(0,0,0,0.10)",
+              border: "1px solid #E5E7EB",
+              background: "#000",
+            }}>
+              {/* 16:9 aspect ratio wrapper */}
+              <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+                <iframe
+                  src="https://player.vimeo.com/video/1179276525?h=b4b9aa39e8&title=0&byline=0&portrait=0&color=4F5FE6"
+                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  title="Kartel featured on CBS"
+                />
+              </div>
+            </div>
+            <p style={{ fontSize: "13px", fontWeight: 600, color: "#1B1F2A", margin: "12px 0 2px" }}>
+              Kartel featured on CBS
+            </p>
+            <p style={{ fontSize: "12px", color: "#5E6370", margin: 0, lineHeight: 1.5 }}>
+              AI creative production — as seen on CBS News
+            </p>
           </div>
         </div>
       </div>
