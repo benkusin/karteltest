@@ -1,9 +1,9 @@
 const LOGOS = [
-  "MGM RESORTS",
-  "NETFLIX",
-  "NEWELL BRANDS",
-  "WARNER MUSIC GROUP",
-  "COLEMAN",
+  { name: "MGM Resorts",        domain: "mgmresorts.com" },
+  { name: "Netflix",            domain: "netflix.com" },
+  { name: "Newell Brands",      domain: "newellbrands.com" },
+  { name: "Warner Music Group", domain: "wmg.com" },
+  { name: "Coleman",            domain: "coleman.com" },
 ];
 
 export function CustomerLogoBar() {
@@ -38,7 +38,7 @@ export function CustomerLogoBar() {
           Trusted by brands and studios
         </p>
 
-        {/* Wordmarks */}
+        {/* Logos */}
         <div
           style={{
             display: "flex",
@@ -46,25 +46,27 @@ export function CustomerLogoBar() {
             justifyContent: "center",
             alignItems: "center",
             gap: "48px",
-            marginTop: "24px",
+            marginTop: "28px",
           }}
           className="logo-bar-row"
         >
-          {LOGOS.map((name) => (
-            <span
+          {LOGOS.map(({ name, domain }) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
               key={name}
+              src={`https://logo.clearbit.com/${domain}`}
+              alt={name}
+              width={120}
+              height={40}
               style={{
-                fontSize: "16px",
-                fontWeight: 700,
-                color: "rgba(27, 31, 42, 0.35)",
-                letterSpacing: "0.05em",
-                textTransform: "uppercase",
+                objectFit: "contain",
+                maxHeight: "36px",
+                width: "auto",
+                filter: "grayscale(100%)",
+                opacity: 0.45,
                 userSelect: "none",
-                whiteSpace: "nowrap",
               }}
-            >
-              {name}
-            </span>
+            />
           ))}
         </div>
       </div>
