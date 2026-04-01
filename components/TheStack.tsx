@@ -440,13 +440,13 @@ export function TheStack({ onOpenModal }: TheStackProps) {
           ))}
         </div>
 
-        {/* Tab panels — stacked, only active one is visible */}
-        <div style={{ marginTop: "40px", position: "relative" }}>
+        {/* Tab panels — all absolute so container height is fixed */}
+        <div style={{ marginTop: "40px", position: "relative", minHeight: "440px" }}>
           {TABS.map((tab, i) => (
             <div
               key={tab.id}
               style={{
-                position: i === 0 ? "relative" : "absolute",
+                position: "absolute",
                 top: 0,
                 left: 0,
                 width: "100%",
@@ -462,10 +462,6 @@ export function TheStack({ onOpenModal }: TheStackProps) {
               />
             </div>
           ))}
-          {/* Spacer so section has correct height regardless of active tab */}
-          <div style={{ visibility: "hidden", pointerEvents: "none" }}>
-            <TabPanel tab={TABS[0]} visible={false} />
-          </div>
         </div>
       </div>
     </section>
