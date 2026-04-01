@@ -162,7 +162,7 @@ export function Platform({ onOpenModal }: PlatformProps) {
           style={{
             display: "grid",
             gap: "64px",
-            alignItems: "start",
+            alignItems: "center",
           }}
           className="grid-cols-1 lg:grid-cols-[65fr_30fr]"
         >
