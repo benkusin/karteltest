@@ -1,148 +1,126 @@
-import Link from "next/link";
-import type { FooterColumn } from "@/types";
-
-const footerColumns: FooterColumn[] = [
+const COLUMNS = [
   {
-    heading: "Platform",
-    links: [
-      { label: "Data Engineering", href: "#" },
-      { label: "Data Warehousing", href: "#" },
-      { label: "Machine Learning", href: "#" },
-      { label: "Streaming", href: "#" },
-      { label: "Mosaic AI", href: "#" },
-      { label: "Lakeflow", href: "#" },
-      { label: "Lakebase", href: "#" },
-      { label: "Unity Catalog", href: "#" },
-      { label: "Delta Sharing", href: "#" },
-      { label: "Databricks SQL", href: "#" },
-      { label: "AI/BI", href: "#" },
-      { label: "Databricks Apps", href: "#" },
-    ],
+    heading: "Product",
+    links: ["Platform", "The Stack", "Pricing", "Documentation"],
   },
   {
-    heading: "Solutions",
-    links: [
-      { label: "Financial Services", href: "#" },
-      { label: "Healthcare & Life Sciences", href: "#" },
-      { label: "Media & Entertainment", href: "#" },
-      { label: "Retail & CPG", href: "#" },
-      { label: "Public Sector", href: "#" },
-      { label: "Manufacturing", href: "#" },
-      { label: "Technology", href: "#" },
-      { label: "AWS", href: "#" },
-      { label: "Azure", href: "#" },
-      { label: "Google Cloud", href: "#" },
-    ],
-  },
-  {
-    heading: "Learn",
-    links: [
-      { label: "Documentation", href: "#" },
-      { label: "Tutorials", href: "#" },
-      { label: "Blog", href: "#" },
-      { label: "Events", href: "#" },
-      { label: "Certification", href: "#" },
-      { label: "Community", href: "#" },
-      { label: "Webinars", href: "#" },
-      { label: "Training", href: "#" },
-    ],
+    heading: "Resources",
+    links: ["Blog", "Case Studies", "Demos", "Guides"],
   },
   {
     heading: "Company",
-    links: [
-      { label: "About Us", href: "#" },
-      { label: "Customers", href: "#" },
-      { label: "Partners", href: "#" },
-      { label: "Newsroom", href: "#" },
-      { label: "Careers", href: "#" },
-      { label: "Contact Us", href: "#" },
-      { label: "Press Kit", href: "#" },
-    ],
+    links: ["About", "Careers", "Contact", "Security"],
   },
 ];
 
-const legalLinks: Array<{ label: string; href: string }> = [
-  { label: "Privacy Notice", href: "#" },
-  { label: "Terms of Use", href: "#" },
-  { label: "Cookie Settings", href: "#" },
-];
+const LINK_STYLE = {
+  fontSize: "14px",
+  color: "#A0A5B2",
+  textDecoration: "none",
+  lineHeight: "2.2",
+  display: "block",
+  transition: "color 0.2s ease",
+} as const;
 
 export function Footer() {
   return (
-    <footer style={{ backgroundColor: "#1B3139" }} className="pt-20 pb-10">
-      <div className="mx-auto max-w-[1280px] px-6">
-        {/* Top grid: logo column + 4 link columns */}
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-5">
-          {/* Logo Column */}
-          <div className="md:col-span-1">
-            <div className="flex items-center gap-1.5">
-              <span className="text-[#FF3621] text-base leading-none">&#9632;</span>
-              <span
-                className="text-white font-bold"
-                style={{ fontSize: "18px", fontWeight: 700 }}
-              >
-                databricks
-              </span>
-            </div>
-            <p
-              className="mt-3"
-              style={{
-                fontSize: "13px",
-                color: "rgba(255,255,255,0.5)",
-              }}
-            >
-              The Data Intelligence Platform
+    <footer
+      id="footer"
+      style={{
+        backgroundColor: "#1B1F2A",
+        borderTop: "1px solid rgba(255,255,255,0.08)",
+        paddingTop: "64px",
+        paddingBottom: "32px",
+      }}
+    >
+      <div
+        className="mx-auto"
+        style={{
+          maxWidth: "1280px",
+          paddingLeft: "clamp(24px, 6.25vw, 80px)",
+          paddingRight: "clamp(24px, 6.25vw, 80px)",
+        }}
+      >
+        {/* Top grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "40px",
+          }}
+          className="sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]"
+        >
+          {/* Brand column */}
+          <div>
+            <p style={{
+              fontSize: "18px", fontWeight: 700, color: "#FFFFFF",
+              letterSpacing: "0.18em", margin: 0,
+            }}>
+              KARTEL
+            </p>
+            <p style={{ fontSize: "14px", color: "#A0A5B2", marginTop: "8px", lineHeight: 1.6 }}>
+              AI creative supply chain
+            </p>
+            <p style={{ fontSize: "14px", color: "#A0A5B2", margin: 0, lineHeight: 1.6 }}>
+              Built &amp; operated
             </p>
           </div>
 
-          {/* Link Columns */}
-          {footerColumns.map((col) => (
-            <div key={col.heading} className="md:col-span-1">
-              <h3
-                className="text-white mb-4 uppercase tracking-[0.08em]"
-                style={{ fontSize: "13px", fontWeight: 600 }}
-              >
+          {/* Link columns */}
+          {COLUMNS.map((col) => (
+            <div key={col.heading}>
+              <p style={{
+                fontSize: "12px", fontWeight: 600, textTransform: "uppercase",
+                letterSpacing: "0.1em", color: "#FFFFFF", margin: "0 0 16px",
+              }}>
                 {col.heading}
-              </h3>
-              <ul>
+              </p>
+              <nav>
                 {col.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-white/60 leading-loose hover:text-white hover:underline transition-colors"
-                      style={{ fontSize: "14px", fontWeight: 400 }}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
+                  <a
+                    key={link}
+                    href="#"
+                    style={LINK_STYLE}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#FFFFFF"; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#A0A5B2"; }}
+                  >
+                    {link}
+                  </a>
                 ))}
-              </ul>
+              </nav>
             </div>
           ))}
         </div>
 
-        {/* Bottom Bar */}
+        {/* Bottom bar */}
         <div
-          className="mt-16 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4"
+          style={{
+            marginTop: "48px",
+            paddingTop: "24px",
+            borderTop: "1px solid rgba(255,255,255,0.08)",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "12px",
+          }}
         >
-          {/* Copyright */}
-          <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>
-            &copy; 2026 Databricks, Inc.
+          <p style={{ fontSize: "13px", color: "#A0A5B2", margin: 0 }}>
+            © 2026 Kartel AI. All rights reserved.
           </p>
-
-          {/* Legal links */}
-          <div className="flex items-center gap-6">
-            {legalLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="hover:text-white transition-colors"
-                style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)" }}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+          <p style={{ fontSize: "13px", color: "#A0A5B2", margin: 0 }}>
+            <a href="#" style={{ color: "#A0A5B2", textDecoration: "none" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#FFFFFF"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#A0A5B2"; }}>
+              Privacy
+            </a>
+            {" · "}
+            <a href="#" style={{ color: "#A0A5B2", textDecoration: "none" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#FFFFFF"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#A0A5B2"; }}>
+              Terms
+            </a>
+          </p>
         </div>
       </div>
     </footer>

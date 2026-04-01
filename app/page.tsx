@@ -8,29 +8,28 @@ import { Platform } from "@/components/Platform";
 import { TheStack } from "@/components/TheStack";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Resources } from "@/components/Resources";
-import { PlatformTabs } from "@/components/PlatformTabs";
-import { SummitSection } from "@/components/SummitSection";
+import { CtaBand } from "@/components/CtaBand";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
+  const openModal = () => setModalOpen(true);
 
   return (
     <>
-      <Nav onOpenModal={() => setModalOpen(true)} />
+      <Nav onOpenModal={openModal} />
       <main>
-        <Hero onOpenModal={() => setModalOpen(true)} />
+        <Hero onOpenModal={openModal} />
         <CustomerLogoBar />
-        <Platform onOpenModal={() => setModalOpen(true)} />
-        <TheStack onOpenModal={() => setModalOpen(true)} />
+        <Platform onOpenModal={openModal} />
+        <TheStack onOpenModal={openModal} />
         <HowItWorks />
         <Resources />
-        <PlatformTabs />
-        <SummitSection />
+        <CtaBand onOpenModal={openModal} />
       </main>
       <Footer />
 
-      {/* Demo request modal — placeholder until built */}
+      {/* Demo request modal */}
       {modalOpen && (
         <div
           className="fixed inset-0 z-[2000] flex items-center justify-center"
@@ -44,7 +43,7 @@ export default function Home() {
           >
             <h2 className="text-xl font-bold text-[#1B1F2A] mb-2">Get in touch</h2>
             <p className="text-[#5E6370] text-sm mb-6">
-              Tell us about your creative production needs and we'll be in touch shortly.
+              Tell us about your creative production needs and we&apos;ll be in touch shortly.
             </p>
             <button
               onClick={() => setModalOpen(false)}
