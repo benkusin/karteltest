@@ -253,7 +253,7 @@ export function Platform({ onOpenModal }: PlatformProps) {
           </div>
 
           {/* ── Sidebar — CBS video ── */}
-          <div>
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
             <div style={{
               borderRadius: "12px",
               overflow: "hidden",
