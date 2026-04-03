@@ -145,9 +145,10 @@ function PlatformMockup() {
 interface TabData {
   id: string;
   label: string;
+  badge: string;
   title: string;
   body: string;
-  bullets: string[];
+  tags: string[];
   ctas: Array<{ label: string; isModal?: boolean }>;
 }
 
@@ -155,14 +156,10 @@ const TABS: TabData[] = [
   {
     id: "platform",
     label: "Platform",
-    title: "Build your brand command center",
-    body: "A clean, intuitive interface built for brands and their agencies. Submit a brief in minutes. Track every deliverable in real time. Review, comment, request changes, and approve final assets — all in one place, with no production complexity leaking through.",
-    bullets: [
-      "Global campaign dashboard across all brands and divisions",
-      "Project & task tracking with real-time status",
-      "Built-in client chat on every deliverable",
-      "Full desktop and mobile experience",
-    ],
+    badge: "CIP",
+    title: "The client-facing command center",
+    body: "The Client Intelligence Platform (CIP) is the client's window into the entire supply chain. Submit projects and briefs at any level — parent brand, division, product line, or individual campaign. Track progress, review outputs, and manage feedback without ever touching the production layer beneath it. Brand governance, usage analytics, and performance data all live here.",
+    tags: ["Project submission", "Brief management", "Asset delivery", "Brand governance", "Performance dashboard", "Usage analytics", "Multi-brand hierarchy"],
     ctas: [
       { label: "See how →", isModal: true },
       { label: "Schedule demo →", isModal: true },
@@ -171,14 +168,10 @@ const TABS: TabData[] = [
   {
     id: "orchestration",
     label: "Orchestration",
-    title: "Where your production logic lives",
-    body: "The operational spine of Kartel — invisible to clients, indispensable to production. Every brief is automatically broken into tasks, assembled into the right team, tracked through production, and delivered on schedule. Budget oversight, team coordination, and delivery management all run here.",
-    bullets: [
-      "Client & campaign management with full hierarchy",
-      "Task sequencing & assignment from brief to delivery",
-      "Cost & credit analytics across the entire operation",
-      "Asset library & media search across all clients",
-    ],
+    badge: "GP · IPP",
+    title: "The engine room",
+    body: "Built on AWS serverless infrastructure, the Internal Production Platform (IPP) and Generative Platform (GP) handle all task sequencing, model routing, and workflow automation. A brief enters the platform and is automatically broken into tasks, assigned to the right combination of agents and talent, sequenced for production, and tracked through to delivery. Agentic agents run 24/7 across the production pipeline.",
+    tags: ["Task sequencing", "Model routing", "Agentic agents", "Workflow automation", "AWS serverless", "API orchestration", "Production tracking", "24/7 operation"],
     ctas: [
       { label: "See how →", isModal: true },
       { label: "Watch demo →", isModal: true },
@@ -186,15 +179,11 @@ const TABS: TabData[] = [
   },
   {
     id: "talent",
-    label: "Talent",
+    label: "Teams & Talent",
+    badge: "Human + AI",
     title: "Human creative intelligence directing the machine",
-    body: "Creative engineers, generative artists, model trainers, and production specialists who know how to get the best from every tool. Not freelancers on a platform — embedded specialists who learn your brand and compound their expertise over time.",
-    bullets: [
-      "Dedicated creative engineers per client",
-      "Prompt engineers and model trainers on staff",
-      "Production specialists managing quality and delivery",
-      "Human + AI collaboration at every stage",
-    ],
+    body: "Kartel's creative talent is embedded inside the supply chain — not separate from it. Creative Engineers direct generative output and maintain brand accuracy. Production specialists manage quality and delivery pipelines. Generative artists push the tools beyond their defaults to produce work that's genuinely brand-native. ML engineers tune models and maintain training pipelines. You never need to source, hire, or manage this team — they come with the system.",
+    tags: ["Creative Engineers", "Generative artists", "Production specialists", "ML engineers", "Prompt engineering", "Quality control", "Brand direction"],
     ctas: [
       { label: "Meet the team →", isModal: true },
       { label: "Schedule demo →", isModal: true },
@@ -203,14 +192,10 @@ const TABS: TabData[] = [
   {
     id: "tools",
     label: "Tools & Agents",
-    title: "Generative infrastructure that runs for you",
-    body: "The best generative AI tools in the market — connected, controlled, and operated as a production system. Not a toolkit you manage, but a machine that produces. Models are fine-tuned on your brand. Agents run continuously. Workflows are engineered to your specifications.",
-    bullets: [
-      "Real-time multiplayer generative canvas",
-      "Custom model training on your brand data",
-      "Agentic production — 24/7 autonomous generation",
-      "Node-based workflow architecture",
-    ],
+    badge: "LLM + Image + Video + MCP + CRON",
+    title: "The best generative infrastructure in the market",
+    body: "Kartel integrates and operates the leading generative AI tools — ComfyUI, LLMs, image and video generation models, and custom pipelines — connected through MCP and our agent network (KLAW). You don't select tools, manage APIs, or absorb model updates. The tool layer is maintained, upgraded, and optimized by our engineering team continuously. Your brief hits the platform; the right tools fire automatically.",
+    tags: ["ComfyUI", "LLM models", "Image generation", "Video generation", "Agentic agents (KLAW)", "MCP integrations", "Custom pipelines", "API layer"],
     ctas: [
       { label: "See how →", isModal: true },
       { label: "Watch demo →", isModal: true },
@@ -219,14 +204,10 @@ const TABS: TabData[] = [
   {
     id: "data",
     label: "Data & Training",
+    badge: "Brand Intelligence",
     title: "The compounding advantage",
-    body: "Brand data, performance signals, and usage patterns continuously train custom models that get more accurate and more native to your brand over time. Every brief, every approval, every performance metric feeds back into a system that knows your brand better than any agency ever could.",
-    bullets: [
-      "Brand intelligence that compounds with every job",
-      "Performance data feedback loops",
-      "Custom model fine-tuning on visual identity and tone",
-      "Approval pattern learning for faster iterations",
-    ],
+    body: "Every job enriches your brand model. Performance data from VidMob and other sources flows back into the training layer — so Kartel learns what performs, what's on-brand, and what resonates with each audience segment. Brand data, governance rules, and usage patterns are encoded as custom training inputs. The result: outputs that get faster, more precise, and more distinctly yours with every engagement. This is the compounding moat that no one else in the market offers.",
+    tags: ["Custom brand models", "Performance data loops", "Brand accuracy training", "Governance encoding", "Usage pattern learning", "Segment intelligence", "Continuous improvement", "Zero data leakage"],
     ctas: [
       { label: "See how →", isModal: true },
       { label: "Schedule demo →", isModal: true },
@@ -322,6 +303,17 @@ function TabPanel({ tab, onOpenModal, visible }: TabPanelProps) {
 
       {/* Copy */}
       <div style={{ paddingLeft: "0" }} className="md:pl-12">
+        {/* Badge */}
+        <span style={{
+          display: "inline-block", fontSize: "11px", fontWeight: 600,
+          letterSpacing: "0.06em", color: "#4F5FE6",
+          background: "rgba(79,95,230,0.08)", border: "1px solid rgba(79,95,230,0.2)",
+          borderRadius: "4px", padding: "3px 8px", marginBottom: "16px",
+          fontFamily: "monospace",
+        }}>
+          {tab.badge}
+        </span>
+
         <h3 style={{
           fontSize: "24px", fontWeight: 700, color: "#1B1F2A",
           margin: 0, lineHeight: 1.25,
@@ -330,31 +322,24 @@ function TabPanel({ tab, onOpenModal, visible }: TabPanelProps) {
         </h3>
 
         <p style={{
-          fontSize: "16px", color: "#5E6370", lineHeight: 1.65,
-          marginTop: "12px", marginBottom: "24px",
+          fontSize: "15px", color: "#5E6370", lineHeight: 1.7,
+          marginTop: "12px", marginBottom: "20px",
         }}>
           {tab.body}
         </p>
 
-        {/* Bullets */}
-        <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-          {tab.bullets.map((bullet) => (
-            <li
-              key={bullet}
-              style={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: "10px",
-                fontSize: "15px",
-                color: "#1B1F2A",
-                lineHeight: 2.0,
-              }}
-            >
-              <span style={{ color: "#4F5FE6", marginTop: "2px", flexShrink: 0, fontSize: "16px" }}>✓</span>
-              {bullet}
-            </li>
+        {/* Tags */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "8px" }}>
+          {tab.tags.map((tag) => (
+            <span key={tag} style={{
+              fontSize: "12px", fontWeight: 500, color: "#5E6370",
+              border: "1px solid #E5E7EB", borderRadius: "4px",
+              padding: "4px 10px", fontFamily: "monospace",
+            }}>
+              {tag}
+            </span>
           ))}
-        </ul>
+        </div>
 
         {/* CTAs */}
         <div style={{ display: "flex", alignItems: "center", gap: "24px", marginTop: "24px", flexWrap: "wrap" }}>

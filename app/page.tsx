@@ -5,7 +5,6 @@ import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { CustomerLogoBar } from "@/components/CustomerLogoBar";
 import { Pillars } from "@/components/Pillars";
-import { Platform } from "@/components/Platform";
 import { TheStack } from "@/components/TheStack";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Resources } from "@/components/Resources";
@@ -24,7 +23,6 @@ export default function Home() {
         <Hero onOpenModal={openModal} />
         <CustomerLogoBar />
         <Pillars />
-        <Platform onOpenModal={openModal} />
         <TheStack onOpenModal={openModal} />
         <HowItWorks />
         <Resources />
