@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kartel — Pillars Section Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: #F7F7F8;
+      color: #1B1F2A;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Context strip ── */
+    .context {
+      background: #fff;
+      border-bottom: 1px solid #E5E7EB;
+      padding: 12px 32px;
+      font-size: 12px;
+      color: #9CA3AF;
+      letter-spacing: 0.04em;
+    }
+    .context strong { color: #4F5FE6; }
+
+    /* ── Section ── */
+    .section {
+      background: #fff;
+      padding: 96px clamp(24px, 6.25vw, 80px);
+      max-width: 1280px;
+      margin: 48px auto;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    /* ── Header ── */
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #4F5FE6;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      color: #1B1F2A;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 18px;
+      color: #5E6370;
+      line-height: 1.6;
+    }
+
+    /* ── 2×2 Grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: #ffffff;
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+      padding: 36px 36px 40px;
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.09);
+      transform: translateY(-3px);
+    }
+
+    /* Subtle accent corner glow on hover */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, #4F5FE6, transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .card:hover::before { opacity: 1; }
+
+    .card-number {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: #4F5FE6;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .card-word {
+      font-size: clamp(28px, 3vw, 36px);
+      font-weight: 700;
+      color: #1B1F2A;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .card-accent-line {
+      width: 32px;
+      height: 3px;
+      background: #4F5FE6;
+      border-radius: 2px;
+      margin-bottom: 24px;
+    }
+
+    .card-claim {
+      font-size: 19px;
+      font-weight: 600;
+      color: #1B1F2A;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .card-body {
+      font-size: 15px;
+      color: #5E6370;
+      line-height: 1.7;
+    }
+
+    /* ── Bottom tagline ── */
+    .tagline {
+      text-align: center;
+      margin-top: 56px;
+      font-size: 14px;
+      color: #9CA3AF;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+      .section { margin: 24px 16px; padding: 64px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="context">
+    KARTEL.AI — <strong>Pillars Section Preview</strong> · Designed for review. Not live yet.
+  </div>
+
+  <div class="section">
+
+    <!-- Header -->
+    <div class="section-header">
+      <p class="eyebrow">The Kartel Advantage</p>
+      <h2 class="section-title">Built different.<br>By design.</h2>
+      <p class="section-sub">Four pillars. One platform. Zero compromises.</p>
+    </div>
+
+    <!-- 2×2 Grid -->
+    <div class="grid">
+
+      <!-- 01 Fast -->
+      <div class="card">
+        <p class="card-number">01</p>
+        <h3 class="card-word">Fast</h3>
+        <div class="card-accent-line"></div>
+        <p class="card-claim">Days, not months.</p>
+        <p class="card-body">
+          Your creative is live in days — not trapped in a production queue for weeks.
+          We configure team, tools, and workflows for your brand out of the box.
+          No migration. No change management. One platform, ready on day one.
+        </p>
+      </div>
+
+      <!-- 02 Scalable -->
+      <div class="card">
+        <p class="card-number">02</p>
+        <h3 class="card-word">Scalable</h3>
+        <div class="card-accent-line"></div>
+        <p class="card-claim">One idea becomes hundreds.</p>
+        <p class="card-body">
+          AI-powered workflows turn a single brief into assets across every channel,
+          format, and audience segment. Ads, video, social, e-commerce — produced
+          in days. Your team focuses on creative direction. We handle the rest.
+        </p>
+      </div>
+
+      <!-- 03 Efficient -->
+      <div class="card">
+        <p class="card-number">03</p>
+        <h3 class="card-word">Efficient</h3>
+        <div class="card-accent-line"></div>
+        <p class="card-claim">You brief it. We build it.</p>
+        <p class="card-body">
+          We own the entire production process — from brief to final asset.
+          You define what you need. We assemble, produce, refine, and deliver.
+          Integrates alongside your agencies or internal teams, not against them.
+        </p>
+      </div>
+
+      <!-- 04 Intelligent -->
+      <div class="card">
+        <p class="card-number">04</p>
+        <h3 class="card-word">Intelligent</h3>
+        <div class="card-accent-line"></div>
+        <p class="card-claim">Every job makes the next one better.</p>
+        <p class="card-body">
+          Performance data flows back into your system automatically. Creative is
+          evaluated, optimized, and aligned to platform best practices on a rolling
+          basis. The more you use it, the more precisely it works for your brand.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Bottom tagline -->
+    <p class="tagline">Four pillars. One platform. Zero compromises.</p>
+
+  </div>
+
+</body>
+</html>
