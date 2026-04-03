@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { CustomerLogoBar } from "@/components/CustomerLogoBar";
+import { Pillars } from "@/components/Pillars";
 import { Platform } from "@/components/Platform";
 import { TheStack } from "@/components/TheStack";
 import { HowItWorks } from "@/components/HowItWorks";
@@ -22,6 +23,7 @@ export default function Home() {
       <main>
         <Hero onOpenModal={openModal} />
         <CustomerLogoBar />
+        <Pillars />
         <Platform onOpenModal={openModal} />
         <TheStack onOpenModal={openModal} />
         <HowItWorks />
