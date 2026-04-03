@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kartel — The Stack Section Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', system-ui, sans-serif; background: #F7F7F8; color: #1B1F2A; -webkit-font-smoothing: antialiased; }
+
+    .context { background: #fff; border-bottom: 1px solid #E5E7EB; padding: 12px 32px; font-size: 12px; color: #9CA3AF; letter-spacing: 0.04em; }
+    .context strong { color: #4F5FE6; }
+
+    .section { background: #fff; padding: 96px clamp(24px, 6.25vw, 80px); max-width: 1280px; margin: 48px auto; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+
+    /* Header */
+    .eyebrow { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: #4F5FE6; margin-bottom: 16px; }
+    .section-title { font-size: clamp(28px, 3vw, 40px); font-weight: 700; color: #1B1F2A; letter-spacing: -0.015em; line-height: 1.15; margin-bottom: 40px; }
+
+    /* Tab bar */
+    .tab-bar { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; margin-bottom: 40px; }
+    .tab-bar::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      padding: 10px 20px; border-radius: 6px; font-size: 14px; font-weight: 500;
+      border: none; cursor: pointer; white-space: nowrap; font-family: inherit;
+      transition: background-color 0.2s, color 0.2s;
+      background: transparent; color: #5E6370;
+    }
+    .tab-btn.active { background: #4F5FE6; color: #fff; }
+    .tab-btn:not(.active):hover { background: #F7F7F8; }
+
+    /* Panels */
+    .panels { position: relative; }
+    .panel { display: none; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .panel.active { display: grid; }
+
+    /* Screenshot mock */
+    .screenshot {
+      background: #242836; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
+      height: 380px; display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: rgba(255,255,255,0.2); letter-spacing: 0.08em; text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    /* Copy */
+    .copy { padding-left: 48px; }
+    .copy h3 { font-size: 24px; font-weight: 700; color: #1B1F2A; line-height: 1.25; margin-bottom: 12px; }
+    .copy p { font-size: 16px; color: #5E6370; line-height: 1.65; margin-bottom: 24px; }
+
+    /* Badge */
+    .badge {
+      display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+      color: #4F5FE6; background: rgba(79,95,230,0.08); border: 1px solid rgba(79,95,230,0.2);
+      border-radius: 4px; padding: 3px 8px; margin-bottom: 20px;
+      font-family: 'DM Sans', monospace;
+    }
+
+    /* Bullets */
+    .bullets { list-style: none; margin-bottom: 20px; }
+    .bullets li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #1B1F2A; line-height: 2; }
+    .bullets li::before { content: "✓"; color: #4F5FE6; font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+
+    /* Tech tags */
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tag {
+      font-size: 12px; font-weight: 500; color: #5E6370;
+      border: 1px solid #E5E7EB; border-radius: 4px; padding: 4px 10px;
+      font-family: monospace;
+    }
+
+    /* CTAs */
+    .ctas { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
+    .cta-link { background: none; border: none; font-size: 15px; font-weight: 500; color: #4F5FE6; cursor: pointer; font-family: inherit; padding: 0; }
+    .cta-link:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .panel.active { grid-template-columns: 1fr; }
+      .copy { padding-left: 0; }
+      .section { margin: 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="context">KARTEL.AI — <strong>The Stack Section Preview</strong> · New copy, existing design. Not live yet.</div>
+
+<div class="section">
+  <p class="eyebrow">The Stack</p>
+  <h2 class="section-title">Every layer. One company. Zero dependencies.</h2>
+
+  <!-- Tab bar -->
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab(0)">Platform</button>
+    <button class="tab-btn" onclick="switchTab(1)">Orchestration</button>
+    <button class="tab-btn" onclick="switchTab(2)">Teams &amp; Talent</button>
+    <button class="tab-btn" onclick="switchTab(3)">Tools &amp; Agents</button>
+    <button class="tab-btn" onclick="switchTab(4)">Data &amp; Training</button>
+  </div>
+
+  <!-- Panels -->
+  <div class="panels">
+
+    <!-- 0: Platform -->
+    <div class="panel active">
+      <div class="screenshot">Platform screenshot</div>
+      <div class="copy">
+        <span class="badge">CIP</span>
+        <h3>The client-facing command center</h3>
+        <p>Where brands submit briefs, track production, and access every output in one place. A clean, intuitive interface built for brands and their agencies — no production complexity leaking through.</p>
+        <ul class="bullets">
+          <li>Global campaign dashboard across all brands and divisions</li>
+          <li>Structured brief intake with brand guidelines library</li>
+          <li>Project &amp; task tracking with real-time status</li>
+          <li>Built-in client chat on every deliverable</li>
+          <li>Approval patterns and delivery calendar</li>
+        </ul>
+        <div class="ctas">
+          <button class="cta-link">See how →</button>
+          <button class="cta-link">Schedule demo →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1: Orchestration -->
+    <div class="panel">
+      <div class="screenshot">Orchestration screenshot</div>
+      <div class="copy">
+        <span class="badge">GP · IPP</span>
+        <h3>The engine room</h3>
+        <p>Routes every brief through the right workflows, models, and talent automatically. No human routing required. Built on AWS serverless infrastructure, the IPP and GP handle all task sequencing, model routing, and workflow automation — agentic agents run 24/7 across the production pipeline.</p>
+        <div class="tags">
+          <span class="tag">Task sequencing</span>
+          <span class="tag">Model routing</span>
+          <span class="tag">Agentic agents</span>
+          <span class="tag">Workflow automation</span>
+          <span class="tag">AWS serverless</span>
+          <span class="tag">API orchestration</span>
+          <span class="tag">Production tracking</span>
+          <span class="tag">24/7 operation</span>
+        </div>
+        <div class="ctas">
+          <button class="cta-link">See how →</button>
+          <button class="cta-link">Watch demo →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2: Teams & Talent -->
+    <div class="panel">
+      <div class="screenshot">Teams &amp; Talent screenshot</div>
+      <div class="copy">
+        <span class="badge">Human + AI</span>
+        <h3>Human creative intelligence directing the machine</h3>
+        <p>Creative engineers, generative artists, and production specialists who know how to get the best from every tool. Not freelancers on a platform — embedded specialists who learn your brand and compound their expertise over time.</p>
+        <ul class="bullets">
+          <li>Dedicated creative engineers per client</li>
+          <li>Prompt engineers and model trainers on staff</li>
+          <li>Production specialists managing quality and delivery</li>
+          <li>Human + AI collaboration at every stage</li>
+        </ul>
+        <div class="ctas">
+          <button class="cta-link">Meet the team →</button>
+          <button class="cta-link">Schedule demo →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3: Tools & Agents -->
+    <div class="panel">
+      <div class="screenshot">Tools &amp; Agents screenshot</div>
+      <div class="copy">
+        <span class="badge">LLM · Image · Video</span>
+        <h3>The best generative infrastructure in the market</h3>
+        <p>Connected and controlled — not a toolkit you manage, but a production system that runs for you. Models are fine-tuned on your brand. Agents run continuously. Workflows are engineered to your specifications.</p>
+        <ul class="bullets">
+          <li>Real-time multiplayer generative canvas</li>
+          <li>Custom model training on your brand data</li>
+          <li>Agentic production — 24/7 autonomous generation</li>
+          <li>Node-based workflow architecture</li>
+        </ul>
+        <div class="ctas">
+          <button class="cta-link">See how →</button>
+          <button class="cta-link">Watch demo →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4: Data & Training -->
+    <div class="panel">
+      <div class="screenshot">Data &amp; Training screenshot</div>
+      <div class="copy">
+        <span class="badge">Brand Intelligence</span>
+        <h3>The compounding advantage</h3>
+        <p>Brand data, performance signals, and usage patterns continuously train custom models that get more accurate and more native to your brand over time. Every brief, every approval, every performance metric feeds back into a system that knows your brand better than any agency ever could.</p>
+        <ul class="bullets">
+          <li>Brand intelligence that compounds with every job</li>
+          <li>Performance data feedback loops</li>
+          <li>Custom model fine-tuning on visual identity and tone</li>
+          <li>Approval pattern learning for faster iterations</li>
+        </ul>
+        <div class="ctas">
+          <button class="cta-link">See how →</button>
+          <button class="cta-link">Schedule demo →</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function switchTab(idx) {
+    document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+    document.querySelectorAll('.panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+  }
+</script>
+
+</body>
+</html>
